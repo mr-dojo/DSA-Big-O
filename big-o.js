@@ -122,3 +122,62 @@ function compute(num) {
 Answer: This algorithm counts the fibonacci sequence and has a linear time complexity of O(n).
 Reason: The amount of times the for loop will run is directly proportional to the size of num.
 */
+
+/*
+8. An efficient search
+In this example, we return to the problem of searching using a more sophisticated approach than in naive search, above.
+Assume that the input array is always sorted. What is the Big O of the following algorithm? Explain your answer*/
+function efficientSearch(array, item) {
+  let minIndex = 0;
+  let maxIndex = array.length - 1;
+  let currentIndex;
+  let currentElement;
+
+  while (minIndex <= maxIndex) {
+    currentIndex = Math.floor((minIndex + maxIndex) / 2);
+    currentElement = array[currentIndex];
+
+    if (currentElement < item) {
+      minIndex = currentIndex + 1;
+    } else if (currentElement > item) {
+      maxIndex = currentIndex - 1;
+    } else {
+      return currentIndex;
+    }
+  }
+  return -1;
+}
+/* 
+Answer: This has a Logarithmic time complexity of O(log(n)).
+Reason: Because the search is starting in the middle of the array and decides what way to go on the first pass..
+The amount of time the while loop will need to run grows slowly compaired to the size of the array.
+*/
+
+/*
+9. Random element
+What is the Big O of the following algorithm? Explain your answer
+*/
+function findRandomElement(arr) {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+/* 
+Answer: This has a Constant time complexity of O(1).
+Reason: No matter how many items are in "arr" the expression will only run once.
+*/
+
+/*
+10. What Am I?
+What does the following algorithm do? What is the Big O of the following algorithm? Explain your answer*/
+function isWhat(n) {
+  if (n < 2 || n % 1 !== 0) {
+    return false;
+  }
+  for (let i = 2; i < n; ++i) {
+    if (n % i === 0) return false;
+  }
+  return true;
+}
+/* 
+Answer:
+Reason: 
+*/
